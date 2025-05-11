@@ -23,3 +23,7 @@ La gestion d'un foyer est une tâche importante, mais peu passionnante. Indispen
 - Gestion intelligente des dépenses du foyer
 - Partager l'app en deux (perso et groupe)
 - Posibilité de checker les tâches fini
+
+## Politique de confidentialité
+
+Consultable [ici](https://c3k4ah.github.io/privacy-policy/gfs/fr/).
