@@ -1,0 +1,75 @@
+name: gfs
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+  table_calendar:
+  percent_indicator:
+  flutter_svg:
+  get:
+  line_icons:
+  flutter_custom_clippers:
+  card_swiper:
+  fl_chart:
+#  charts_flutter:
+#  calendar_agenda:
+  syncfusion_flutter_calendar: ^29.1.41
+  #Local database
+  path:
+  hive:
+  hive_flutter:
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # hive database generators
+  build_runner: ^2.1.11
+  hive_generator: ^2.0.1
+  flutter_launcher_icons: ^0.14.3
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo/dark/gf_dark_launcher.png"
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    - assets/images/
+    - assets/logo/dark/
+    - assets/logo/light/
+
+  fonts:
+    - family: ProductSans
+      fonts:
+        - asset: assets/fonts/PS.ttf
+          style: normal
+          weight: 700
+    - family: Sifonn
+      fonts:
+        - asset: assets/fonts/SIFONN_BASIC_OUTLINE.otf
+          style: normal
+          weight: 700
+
