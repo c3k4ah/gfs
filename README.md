@@ -27,3 +27,6 @@ La gestion d'un foyer est une tâche importante, mais peu passionnante. Indispen
 ## Politique de confidentialité
 
 Consultable [ici](https://c3k4ah.github.io/privacy-policy/gfs/fr/).
+
+## N.B :
+Ce projet a été démarré en 2021 et repris en 2025. De nombreux refactorings sont en cours même si le projet est fonctionnel.

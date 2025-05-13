@@ -62,6 +62,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//si tu veux builder la base de donnée Hive :
-//commande à executer une fois seulement ou en cas de modification d'un Model
-//flutter packages pub run build_runner build --delete-conflicting-outputs
+//flutter pub run build_runner build --delete-conflicting-outputs
