@@ -43,20 +43,12 @@ class _MembreListState extends State<MembreList> {
         elevation: 0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
-          "MEMBRES",
-          style: TextStyle(
-            color: dark,
-            fontSize: 35,
-          ),
-        ),
+        title: Text("MEMBRES", style: TextStyle(color: dark, fontSize: 35)),
         leading: IconButton(
           onPressed: () {
             _key.currentState!.openDrawer();
           },
-          icon: Icon(
-            LineIcons.verticalEllipsis,
-          ),
+          icon: Icon(LineIcons.verticalEllipsis),
           color: Colors.black,
         ),
       ),
@@ -75,10 +67,7 @@ class _MembreListState extends State<MembreList> {
                     final membre = membres[index];
                     return cardMembre(
                       onPressed: () {
-                        _action.deleteItemAt(
-                          boxe: 'membre',
-                          itemId: index,
-                        );
+                        _action.deleteItemAt(boxe: 'membre', itemId: index);
                       },
                       name: membre.nom,
                       prom: membre.promotion.toString(),
@@ -89,10 +78,7 @@ class _MembreListState extends State<MembreList> {
               } else {
                 return Container(
                   margin: EdgeInsets.only(top: 120),
-                  child: emptyWidget(
-                    bgColor: Colors.white,
-                    textColor: dark,
-                  ),
+                  child: emptyWidget(bgColor: Colors.white, textColor: dark),
                 );
               }
             },
@@ -112,11 +98,7 @@ class _MembreListState extends State<MembreList> {
                 Get.toNamed('/groupe');
               },
               backgroundColor: orange,
-              child: Icon(
-                LineIcons.users,
-                color: Colors.white,
-                size: 30,
-              ),
+              child: Icon(LineIcons.users, color: Colors.white, size: 30),
             ),
             FloatingActionButton(
               heroTag: '/popPup',
@@ -124,12 +106,8 @@ class _MembreListState extends State<MembreList> {
                 popEdit();
               },
               backgroundColor: orange,
-              child: Icon(
-                LineIcons.userPlus,
-                color: Colors.white,
-                size: 25,
-              ),
-            )
+              child: Icon(LineIcons.userPlus, color: Colors.white, size: 25),
+            ),
           ],
         ),
       ),
@@ -138,239 +116,258 @@ class _MembreListState extends State<MembreList> {
 
   Future popEdit() {
     return showDialog(
-        context: context,
-        builder: (context) {
-          return SimpleDialog(
-            backgroundColor: Colors.transparent,
-            children: [
-              Container(
-                height: 350,
-                margin: EdgeInsets.symmetric(vertical: 10),
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(25)),
-                child: Column(
-                  children: [
-                    SingleChildScrollView(
-                      child: Container(
-                        height: 280,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 8,
-                              ),
-                              child: Text(
-                                "Ajout de nouvau membre",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 17,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              padding: EdgeInsets.symmetric(horizontal: 25),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black12,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: TextField(
-                                controller: _nameController,
-                                maxLines: 4,
-                                keyboardType: TextInputType.text,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    hintText: "*Nom",
-                                    border: InputBorder.none),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              padding: EdgeInsets.symmetric(horizontal: 25),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black12,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: TextField(
-                                controller: _promController,
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.normal),
-                                keyboardType: TextInputType.number,
-                                maxLines: 1,
-                                decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    prefixText: 'P',
-                                    prefixStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    suffixStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    hintText:
-                                        "*Promotion (ex: ecrire 20 si P20)",
-                                    border: InputBorder.none),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              padding: EdgeInsets.symmetric(horizontal: 25),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black12,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: TextField(
-                                controller: _roleController,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                maxLines: 1,
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black38,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  hintText: "*role",
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              padding: EdgeInsets.symmetric(horizontal: 25),
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: Colors.black12,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: TextField(
-                                controller: _esController,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                keyboardType: TextInputType.text,
-                                maxLines: 1,
-                                decoration: InputDecoration(
-                                    hintStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    hintText: "*ES",
-                                    border: InputBorder.none),
-                              ),
-                            ),
-                          ],
-                        ),
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          backgroundColor: Colors.transparent,
+          children: [
+            Container(
+              height: 350,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    child: Container(
+                      height: 280,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      child: Column(
                         children: [
-                          SizedBox(
-                            width: 100,
-                            height: 40,
-                            child: MaterialButton(
-                              color: isEmpt ? orange.withOpacity(0.4) : orange,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
+                            child: Text(
+                              "Ajout de nouvau membre",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: 17,
                               ),
-                              child: Text(
-                                "enregister",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                              onPressed: () async {
-                                if (_nameController.text.isNotEmpty ||
-                                    _esController.text.isNotEmpty ||
-                                    _promController.text.isNotEmpty ||
-                                    _roleController.text.isNotEmpty) {
-                                  _action.addMembre(
-                                    nom: _nameController.text,
-                                    promotion: int.parse(_promController.text),
-                                    es: _esController.text,
-                                    role: _roleController.text,
-                                  );
-                                  _nameController.clear();
-                                  _promController.clear();
-                                  _roleController.clear();
-                                  _esController.clear();
-                                  Navigator.pop(context);
-                                }
-                              },
                             ),
                           ),
-                          SizedBox(
-                            width: 100,
-                            height: 40,
-                            child: MaterialButton(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: Text(
-                                  "annuler",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 5,
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.black12,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: TextField(
+                              controller: _nameController,
+                              maxLines: 4,
+                              keyboardType: TextInputType.text,
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.normal,
                                 ),
-                                onPressed: () {
-                                  _nameController.clear();
-                                  _promController.clear();
-                                  _roleController.clear();
-                                  _esController.clear();
-                                  Navigator.pop(context);
-                                }),
+                                hintText: "*Nom",
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 5,
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.black12,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: TextField(
+                              controller: _promController,
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              keyboardType: TextInputType.number,
+                              maxLines: 1,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                prefixText: 'P',
+                                prefixStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                suffixStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                hintText: "*Promotion (ex: ecrire 20 si P20)",
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 5,
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.black12,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: TextField(
+                              controller: _roleController,
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              maxLines: 1,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                hintText: "*role",
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 5,
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.black12,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: TextField(
+                              controller: _esController,
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              keyboardType: TextInputType.text,
+                              maxLines: 1,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                hintText: "*ES",
+                                border: InputBorder.none,
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          );
-        });
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 8,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 40,
+                          child: MaterialButton(
+                            color:
+                                isEmpt ? orange.withValues(alpha: 0.4) : orange,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              "enregister",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () async {
+                              if (_nameController.text.isNotEmpty ||
+                                  _esController.text.isNotEmpty ||
+                                  _promController.text.isNotEmpty ||
+                                  _roleController.text.isNotEmpty) {
+                                _action.addMembre(
+                                  nom: _nameController.text,
+                                  promotion: int.parse(_promController.text),
+                                  es: _esController.text,
+                                  role: _roleController.text,
+                                );
+                                _nameController.clear();
+                                _promController.clear();
+                                _roleController.clear();
+                                _esController.clear();
+                                Navigator.pop(context);
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 100,
+                          height: 40,
+                          child: MaterialButton(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              "annuler",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () {
+                              _nameController.clear();
+                              _promController.clear();
+                              _roleController.clear();
+                              _esController.clear();
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

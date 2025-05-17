@@ -59,17 +59,13 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
         isValide = true;
       });
       if (isFirstDate) {
-        setState(
-          () {
-            dateDebut = DateTime(a, m, j);
-          },
-        );
+        setState(() {
+          dateDebut = DateTime(a, m, j);
+        });
       } else {
-        setState(
-          () {
-            dateFin = DateTime(a, m, j);
-          },
-        );
+        setState(() {
+          dateFin = DateTime(a, m, j);
+        });
       }
     }
   }
@@ -86,14 +82,14 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
     _yearDateFinController.clear();
   }
 
-//--------------------------
+  //--------------------------
   double montant = 0.0;
   String titre = "";
   int type = 100;
   DateTime dateDebut = DateTime.now();
   DateTime dateFin = DateTime.now();
 
-//--------------------------
+  //--------------------------
   @override
   void initState() {
     categList = _data.listCategorie;
@@ -113,9 +109,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(
-            LineIcons.arrowLeft,
-          ),
+          icon: Icon(LineIcons.arrowLeft),
           color: dark,
         ),
         title: Text(
@@ -171,12 +165,10 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                                   couleur: categorie.couleur,
                                   isSelected: selectedIndex == index,
                                   callback: () {
-                                    setState(
-                                      () {
-                                        selectedIndex = index;
-                                        type = index;
-                                      },
-                                    );
+                                    setState(() {
+                                      selectedIndex = index;
+                                      type = index;
+                                    });
                                     //print("type : $type et index : $index");
                                     //print(categList[index].name);
                                   },
@@ -202,10 +194,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       height: 50,
                       decoration: BoxDecoration(
@@ -253,10 +242,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       height: 50,
                       decoration: BoxDecoration(
@@ -313,7 +299,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 10,
-                          color: dark.withOpacity(.4),
+                          color: dark.withValues(alpha: .4),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -346,7 +332,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 10,
-                          color: dark.withOpacity(.4),
+                          color: dark.withValues(alpha: .4),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -369,7 +355,7 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
                           hintText: "année",
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -452,32 +438,22 @@ class _AjoutBudgetPageState extends State<AjoutBudgetPage> {
       onTap: callback,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
-        padding: EdgeInsets.only(
-          top: 7,
-          left: 7,
-          right: 7,
-          bottom: 0,
-        ),
-        decoration: isSelected
-            ? BoxDecoration(
-                color: couleur.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(8),
-              )
-            : BoxDecoration(),
+        padding: EdgeInsets.only(top: 7, left: 7, right: 7, bottom: 0),
+        decoration:
+            isSelected
+                ? BoxDecoration(
+                  color: couleur.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(8),
+                )
+                : BoxDecoration(),
         child: Column(
           children: [
             CircleAvatar(
               backgroundColor: couleur,
               radius: 25,
-              child: Icon(
-                icon,
-                size: 32,
-                color: Colors.white,
-              ),
+              child: Icon(icon, size: 32, color: Colors.white),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             Text(
               name,
               overflow: TextOverflow.ellipsis,

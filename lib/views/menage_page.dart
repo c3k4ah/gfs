@@ -44,9 +44,7 @@ class _TourDeMenageState extends State<TourDeMenage> {
           onPressed: () {
             _key.currentState!.openDrawer();
           },
-          icon: Icon(
-            LineIcons.verticalEllipsis,
-          ),
+          icon: Icon(LineIcons.verticalEllipsis),
           color: Colors.black,
         ),
       ),
@@ -81,11 +79,8 @@ class _TourDeMenageState extends State<TourDeMenage> {
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.7),
-                                  offset: Offset(
-                                    5.0,
-                                    10.0,
-                                  ),
+                                  color: Colors.black.withValues(alpha: 0.7),
+                                  offset: Offset(5.0, 10.0),
                                   blurRadius: 15.0,
                                   spreadRadius: -10.0,
                                 ),
@@ -128,8 +123,9 @@ class _TourDeMenageState extends State<TourDeMenage> {
                                         child: MaterialButton(
                                           padding: EdgeInsets.zero,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
+                                            borderRadius: BorderRadius.circular(
+                                              50,
+                                            ),
                                           ),
                                           onPressed: () {
                                             _action.deleteItemAt(
@@ -205,187 +201,179 @@ class _TourDeMenageState extends State<TourDeMenage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.bottomSheet(popAdd(
-            saveButton: () async {
-              if (_titreTextController.text.isNotEmpty ||
-                  _descriTextController.text.isNotEmpty) {
-                await _action.addEmplacement(
-                  place: _titreTextController.text,
-                  description: _descriTextController.text,
-                );
-                _titreTextController.clear();
-                _descriTextController.clear();
-                Navigator.pop(context);
-              } else {
-                showMe(
-                  "ALERT",
-                  "L'un de vos formulaires est vide !",
-                  dark,
-                );
-              }
-            },
-          ));
+          Get.bottomSheet(
+            popAdd(
+              saveButton: () async {
+                if (_titreTextController.text.isNotEmpty ||
+                    _descriTextController.text.isNotEmpty) {
+                  await _action.addEmplacement(
+                    place: _titreTextController.text,
+                    description: _descriTextController.text,
+                  );
+                  _titreTextController.clear();
+                  _descriTextController.clear();
+                  Navigator.pop(context);
+                } else {
+                  showMe("ALERT", "L'un de vos formulaires est vide !", dark);
+                }
+              },
+            ),
+          );
         },
         backgroundColor: dark,
-        child: Icon(
-          LineIcons.plus,
-          color: Colors.white,
-        ),
+        child: Icon(LineIcons.plus, color: Colors.white),
       ),
     );
   }
 
-  BottomSheet popAdd({
-    required VoidCallback saveButton,
-  }) {
+  BottomSheet popAdd({required VoidCallback saveButton}) {
     return BottomSheet(
       onClosing: () {},
       builder: ((context) {
-        return StatefulBuilder(builder: (context, setState) {
-          return Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    color: dark,
-                    width: Get.width,
-                    height: 50,
-                    padding: EdgeInsets.symmetric(vertical: 5),
-                    child: Center(
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      color: dark,
+                      width: Get.width,
+                      height: 50,
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Center(
+                        child: Text(
+                          "Ajout d'une nouvelle tache",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 25),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: Get.width,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.symmetric(vertical: 7),
                       child: Text(
-                        "Ajout d'une nouvelle tache",
-                        textAlign: TextAlign.center,
+                        "Nom de votre tache",
+                        textAlign: TextAlign.start,
                         style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
+                          fontSize: 17,
+                          color: dark,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: Get.width,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    margin: EdgeInsets.symmetric(vertical: 7),
-                    child: Text(
-                      "Nom de votre tache",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: dark,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
                       ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: TextField(
-                      controller: _titreTextController,
-                      maxLines: 2,
-                      keyboardType: TextInputType.text,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
+                      child: TextField(
+                        controller: _titreTextController,
+                        maxLines: 2,
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(
                           fontSize: 17,
-                          color: Colors.black38,
+                          color: Colors.black,
                           fontWeight: FontWeight.normal,
                         ),
-                        hintText: "ex : fanadiovana W.C",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: Get.width,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    margin: EdgeInsets.symmetric(vertical: 7),
-                    child: Text(
-                      "Description de votre tache",
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: dark,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 10,
-                    ),
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.black12,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: TextField(
-                      controller: _descriTextController,
-                      maxLines: 5,
-                      keyboardType: TextInputType.text,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
-                      ),
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontSize: 17,
-                          color: Colors.black38,
-                          fontWeight: FontWeight.normal,
-                        ),
-                        hintText: "comment effectuer votre tache ?",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SizedBox(
-                          width: 150,
-                          height: 50,
-                          child: MaterialButton(
-                            color: dark,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              "enregister",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                            ),
-                            onPressed: saveButton,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black38,
+                            fontWeight: FontWeight.normal,
                           ),
+                          hintText: "ex : fanadiovana W.C",
+                          border: InputBorder.none,
                         ),
-                        SizedBox(
-                          width: 150,
-                          height: 50,
-                          child: MaterialButton(
+                      ),
+                    ),
+                    Container(
+                      width: Get.width,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.symmetric(vertical: 7),
+                      child: Text(
+                        "Description de votre tache",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: dark,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: TextField(
+                        controller: _descriTextController,
+                        maxLines: 5,
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.black,
+                          fontWeight: FontWeight.normal,
+                        ),
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black38,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          hintText: "comment effectuer votre tache ?",
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 8,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SizedBox(
+                            width: 150,
+                            height: 50,
+                            child: MaterialButton(
+                              color: dark,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                "enregister",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: saveButton,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 150,
+                            height: 50,
+                            child: MaterialButton(
                               color: Colors.redAccent,
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                               child: Text(
                                 "annuler",
                                 style: TextStyle(
@@ -399,16 +387,18 @@ class _TourDeMenageState extends State<TourDeMenage> {
                                 _descriTextController.clear();
                                 setState(() {});
                                 Navigator.pop(context);
-                              }),
-                        ),
-                      ],
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
-            ),
-          );
-        });
+            );
+          },
+        );
       }),
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gfs/constants.dart';
 import 'package:gfs/database/db.transaction.dart';
-
 import 'package:gfs/persistData/data.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -41,12 +40,12 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
     listComposant.clear();
   }
 
-//--------------------------
+  //--------------------------
 
   String titre = "";
   int type = 100;
 
-//--------------------------
+  //--------------------------
   @override
   void initState() {
     categList = _data.categoriePlat;
@@ -67,9 +66,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
             Get.back();
             cleanAll();
           },
-          icon: Icon(
-            LineIcons.angleLeft,
-          ),
+          icon: Icon(LineIcons.angleLeft),
           color: dark,
         ),
         title: Text(
@@ -103,62 +100,57 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                 ),
               ),
               Container(
-                  width: Get.width * .9,
-                  height: 82,
-                  //color: Colors.amber,
-                  margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      categWidget(
-                        name: categList[0].name,
-                        icon: categList[0].icon,
-                        couleur: categList[0].couleur,
-                        isSelected: selectedIndex == 0,
-                        callback: () {
-                          setState(
-                            () {
-                              selectedIndex = 0;
-                              type = 0;
-                            },
-                          );
+                width: Get.width * .9,
+                height: 82,
+                //color: Colors.amber,
+                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    categWidget(
+                      name: categList[0].name,
+                      icon: categList[0].icon,
+                      couleur: categList[0].couleur,
+                      isSelected: selectedIndex == 0,
+                      callback: () {
+                        setState(() {
+                          selectedIndex = 0;
+                          type = 0;
+                        });
 
-                          //print(categList[0].name);
-                        },
-                      ),
-                      categWidget(
-                        name: categList[1].name,
-                        icon: categList[1].icon,
-                        couleur: categList[1].couleur,
-                        isSelected: selectedIndex == 1,
-                        callback: () {
-                          setState(
-                            () {
-                              selectedIndex = 1;
-                              type = 1;
-                            },
-                          );
-                          // print(categList[1].name);
-                        },
-                      ),
-                      categWidget(
-                        name: categList[2].name,
-                        icon: categList[2].icon,
-                        couleur: categList[2].couleur,
-                        isSelected: selectedIndex == 2,
-                        callback: () {
-                          setState(
-                            () {
-                              selectedIndex = 2;
-                              type = 2;
-                            },
-                          );
+                        //print(categList[0].name);
+                      },
+                    ),
+                    categWidget(
+                      name: categList[1].name,
+                      icon: categList[1].icon,
+                      couleur: categList[1].couleur,
+                      isSelected: selectedIndex == 1,
+                      callback: () {
+                        setState(() {
+                          selectedIndex = 1;
+                          type = 1;
+                        });
+                        // print(categList[1].name);
+                      },
+                    ),
+                    categWidget(
+                      name: categList[2].name,
+                      icon: categList[2].icon,
+                      couleur: categList[2].couleur,
+                      isSelected: selectedIndex == 2,
+                      callback: () {
+                        setState(() {
+                          selectedIndex = 2;
+                          type = 2;
+                        });
 
-                          //print(categList[2].name);
-                        },
-                      ),
-                    ],
-                  )),
+                        //print(categList[2].name);
+                      },
+                    ),
+                  ],
+                ),
+              ),
               Container(
                 width: Get.width,
                 padding: EdgeInsets.symmetric(horizontal: 15),
@@ -174,10 +166,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 height: 50,
                 decoration: BoxDecoration(
@@ -225,10 +214,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 height: 50,
                 decoration: BoxDecoration(
@@ -282,10 +268,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                   children: [
                     Container(
                       width: Get.width * .735,
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       height: 50,
                       decoration: BoxDecoration(
@@ -325,17 +308,15 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                           _uneCompositionController.clear();
                           // print(listComposant);
                         },
-                        color: selectedIndex == 100
-                            ? dark
-                            : categList[selectedIndex].couleur,
+                        color:
+                            selectedIndex == 100
+                                ? dark
+                                : categList[selectedIndex].couleur,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Center(
-                          child: Icon(
-                            LineIcons.plus,
-                            color: Colors.white,
-                          ),
+                          child: Icon(LineIcons.plus, color: Colors.white),
                         ),
                       ),
                     ),
@@ -344,18 +325,17 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
               ),
               Container(
                 width: Get.width,
-                height: (listComposant.length <= 5)
-                    ? (listComposant.length * 35).toDouble()
-                    : 125,
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
+                height:
+                    (listComposant.length <= 5)
+                        ? (listComposant.length * 35).toDouble()
+                        : 125,
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 decoration: BoxDecoration(
-                  color: selectedIndex == 100
-                      ? dark
-                      : categList[selectedIndex].couleur,
+                  color:
+                      selectedIndex == 100
+                          ? dark
+                          : categList[selectedIndex].couleur,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: ListView.builder(
@@ -410,10 +390,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 height: 100,
                 decoration: BoxDecoration(
@@ -446,9 +423,7 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 30,
-              ),
+              SizedBox(height: 30),
               SizedBox(
                 height: 50,
                 width: 250,
@@ -481,15 +456,13 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
                       );
                     }
                   },
-                  color: selectedIndex == 100
-                      ? dark
-                      : categList[selectedIndex].couleur,
+                  color:
+                      selectedIndex == 100
+                          ? dark
+                          : categList[selectedIndex].couleur,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(
-                      width: 1.5,
-                      color: Colors.white,
-                    ),
+                    side: BorderSide(width: 1.5, color: Colors.white),
                   ),
                   child: Center(
                     child: Text(
@@ -522,32 +495,22 @@ class _AjoutBudgPlatState extends State<AjoutPlatPage> {
       onTap: callback,
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
-        padding: EdgeInsets.only(
-          top: 7,
-          left: 7,
-          right: 7,
-          bottom: 0,
-        ),
-        decoration: isSelected
-            ? BoxDecoration(
-                color: couleur.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(8),
-              )
-            : BoxDecoration(),
+        padding: EdgeInsets.only(top: 7, left: 7, right: 7, bottom: 0),
+        decoration:
+            isSelected
+                ? BoxDecoration(
+                  color: couleur.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(8),
+                )
+                : BoxDecoration(),
         child: Column(
           children: [
             CircleAvatar(
               backgroundColor: couleur,
               radius: 25,
-              child: Icon(
-                icon,
-                size: 32,
-                color: Colors.white,
-              ),
+              child: Icon(icon, size: 32, color: Colors.white),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             Text(
               name,
               overflow: TextOverflow.ellipsis,

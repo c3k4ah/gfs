@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 
 import '../../constants.dart';
 
-Widget emptyWidget({
-  Color? bgColor,
-  Color? textColor,
-}) {
+Widget emptyWidget({Color? bgColor, Color? textColor}) {
   return Container(
     color: bgColor ?? dark,
     child: Column(
@@ -15,15 +12,14 @@ Widget emptyWidget({
       children: [
         Container(
           width: Get.width,
-          height: 240,
+          height: 300,
           margin: EdgeInsets.symmetric(vertical: 15),
           decoration: BoxDecoration(
-              image: DecorationImage(
-            fit: BoxFit.cover,
-            image: ExactAssetImage(
-              'assets/images/waiting.png',
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: ExactAssetImage('assets/images/waiting.png'),
             ),
-          )),
+          ),
         ),
         Container(
           width: Get.width,
@@ -33,11 +29,11 @@ Widget emptyWidget({
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 30,
-              color: (textColor ?? Colors.white).withOpacity(.4),
+              color: (textColor ?? Colors.white).withValues(alpha: .4),
               fontWeight: FontWeight.normal,
             ),
           ),
-        )
+        ),
       ],
     ),
   );

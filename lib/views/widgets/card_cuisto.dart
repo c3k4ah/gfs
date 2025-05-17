@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icons.dart';
-
 import 'package:gfs/models/categorie/model.categorie.plat.dart';
 import 'package:gfs/persistData/data.dart';
+import 'package:line_icons/line_icons.dart';
 
 class RecipeCard extends StatefulWidget {
   final String title;
@@ -31,33 +30,30 @@ class _RecipeCardState extends State<RecipeCard> {
 
   List<PlatModel> categorie(String nom) {
     return _data.categoriePlat
-        .where(
-          (element) => element.name.toLowerCase() == nom.toLowerCase(),
-        )
+        .where((element) => element.name.toLowerCase() == nom.toLowerCase())
         .toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            width: 2,
-            color: categorie(widget.categorie)[0].couleur,
-          )),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(
+          width: 2,
+          color: categorie(widget.categorie)[0].couleur,
+        ),
+      ),
       // height: 120,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: widget.isHome
-            ? MainAxisAlignment.spaceBetween
-            : MainAxisAlignment.start,
+        mainAxisAlignment:
+            widget.isHome
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.start,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,17 +77,14 @@ class _RecipeCardState extends State<RecipeCard> {
                       width: Get.width * .6,
                       child: Text(
                         widget.title,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(fontSize: 25, color: Colors.black),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         textAlign: TextAlign.start,
                       ),
                     ),
                     CircleAvatar(
-                      backgroundColor: Colors.white.withOpacity(.5),
+                      backgroundColor: Colors.white.withValues(alpha: .5),
                       radius: 25,
                       child: Icon(
                         categorie(widget.categorie)[0].icon,
@@ -103,16 +96,10 @@ class _RecipeCardState extends State<RecipeCard> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Text(
                   'Commentaire :',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   textAlign: TextAlign.start,
@@ -122,26 +109,17 @@ class _RecipeCardState extends State<RecipeCard> {
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
                   widget.commentaire,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black54,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.black54),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                   textAlign: TextAlign.start,
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Text(
                   'Compositions :',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   textAlign: TextAlign.start,
@@ -156,23 +134,15 @@ class _RecipeCardState extends State<RecipeCard> {
                     return Container(
                       // margin: EdgeInsets.symmetric(horizontal: 10),
                       height: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                      ),
+                      decoration: BoxDecoration(color: Colors.transparent),
                       child: ListTile(
                         leading: Text(
                           widget.ingredient[index],
-                          style: TextStyle(
-                            color: Colors.black45,
-                            fontSize: 20,
-                          ),
+                          style: TextStyle(color: Colors.black45, fontSize: 20),
                         ),
                         trailing: Text(
                           "+",
-                          style: TextStyle(
-                            color: Colors.black45,
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(color: Colors.black45, fontSize: 15),
                         ),
                       ),
                     );
@@ -194,17 +164,11 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                   child: Row(
                     children: [
-                      Icon(
-                        LineIcons.utensils,
-                        color: Colors.white,
-                        size: 18,
-                      ),
+                      Icon(LineIcons.utensils, color: Colors.white, size: 18),
                       SizedBox(width: 7),
                       Text(
                         widget.categorie + ' ',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
@@ -218,21 +182,15 @@ class _RecipeCardState extends State<RecipeCard> {
                   ),
                   child: Row(
                     children: [
-                      Icon(
-                        LineIcons.coins,
-                        color: Colors.white,
-                        size: 18,
-                      ),
+                      Icon(LineIcons.coins, color: Colors.white, size: 18),
                       SizedBox(width: 7),
                       Text(
                         widget.prix + ' Ar',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             alignment: Alignment.bottomCenter,

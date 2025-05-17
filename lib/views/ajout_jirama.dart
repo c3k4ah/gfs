@@ -54,17 +54,13 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
         isValide = true;
       });
       if (isFirstDate) {
-        setState(
-          () {
-            dateDebut = DateTime(a, m, j);
-          },
-        );
+        setState(() {
+          dateDebut = DateTime(a, m, j);
+        });
       } else {
-        setState(
-          () {
-            dateFin = DateTime(a, m, j);
-          },
-        );
+        setState(() {
+          dateFin = DateTime(a, m, j);
+        });
       }
     }
   }
@@ -80,14 +76,14 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
     _yearDateFinController.clear();
   }
 
-//--------------------------
+  //--------------------------
   double montant = 0.0;
   String titre = "";
   int type = 100;
   DateTime dateDebut = DateTime.now();
   DateTime dateFin = DateTime.now();
 
-//--------------------------
+  //--------------------------
   @override
   void initState() {
     super.initState();
@@ -106,9 +102,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(
-            LineIcons.arrowLeft,
-          ),
+          icon: Icon(LineIcons.arrowLeft),
           color: dark,
         ),
         title: Text(
@@ -146,10 +140,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       height: 50,
                       decoration: BoxDecoration(
@@ -197,10 +188,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 15,
-                        vertical: 5,
-                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       height: 50,
                       decoration: BoxDecoration(
@@ -257,7 +245,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 10,
-                          color: dark.withOpacity(.4),
+                          color: dark.withValues(alpha: .4),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -290,7 +278,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 10,
-                          color: dark.withOpacity(.4),
+                          color: dark.withValues(alpha: .4),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -313,7 +301,7 @@ class _AjoutJirmaPageState extends State<AjoutJirmaPage> {
                           hintText: "année",
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:line_icons/line_icons.dart';
 
 import '../../constants.dart';
@@ -22,7 +21,8 @@ class _AppDrawerState extends State<AppDrawer> {
     return Drawer(
       child: Material(
         color: Colors.white,
-        child: ListView(
+        // borderRadius: BorderRadius.circular(0),
+        child: Column(
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(20),
@@ -41,15 +41,11 @@ class _AppDrawerState extends State<AppDrawer> {
                         image: ExactAssetImage('assets/images/gfs.png'),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-            Divider(
-              color: dark.withOpacity(.2),
-              height: 1,
-              thickness: 1,
-            ),
+            Divider(color: dark.withValues(alpha: .2), height: 1, thickness: 1),
             Container(
               child: Column(
                 children: [
@@ -59,11 +55,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 0,
                     voidCallback: () {
                       Get.offAllNamed('/home');
-                      setState(
-                        () {
-                          selectedIndex = 0;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 0;
+                      });
                     },
                   ),
                   menuItems(
@@ -72,11 +66,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 1,
                     voidCallback: () {
                       Get.offAllNamed('/jirama');
-                      setState(
-                        () {
-                          selectedIndex = 1;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 1;
+                      });
                     },
                   ),
                   menuItems(
@@ -85,11 +77,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 2,
                     voidCallback: () {
                       Get.offAllNamed('/cuisine');
-                      setState(
-                        () {
-                          selectedIndex = 2;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 2;
+                      });
                     },
                   ),
                   menuItems(
@@ -98,11 +88,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 3,
                     voidCallback: () {
                       Get.offAllNamed('/menage');
-                      setState(
-                        () {
-                          selectedIndex = 3;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 3;
+                      });
                     },
                   ),
                   menuItems(
@@ -111,11 +99,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 4,
                     voidCallback: () {
                       Get.offAllNamed('/budget');
-                      setState(
-                        () {
-                          selectedIndex = 4;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 4;
+                      });
                     },
                   ),
                   menuItems(
@@ -126,11 +112,9 @@ class _AppDrawerState extends State<AppDrawer> {
                       if (Boxes.getEmplacement().isNotEmpty &&
                           Boxes.getGroupe().isNotEmpty) {
                         Get.offAllNamed('/agenda');
-                        setState(
-                          () {
-                            selectedIndex = 5;
-                          },
-                        );
+                        setState(() {
+                          selectedIndex = 5;
+                        });
                       } else {
                         showMe(
                           "ALERT",
@@ -146,11 +130,9 @@ class _AppDrawerState extends State<AppDrawer> {
                     isSelected: selectedIndex == 6,
                     voidCallback: () {
                       Get.offAllNamed('/membre');
-                      setState(
-                        () {
-                          selectedIndex = 6;
-                        },
-                      );
+                      setState(() {
+                        selectedIndex = 6;
+                      });
                     },
                   ),
                   /*menuItems(
@@ -169,15 +151,10 @@ class _AppDrawerState extends State<AppDrawer> {
                 ],
               ),
             ),
-            Divider(
-              color: dark.withOpacity(.2),
-              height: 1,
-              thickness: 1,
-            ),
+            Spacer(),
+            Divider(color: dark.withValues(alpha: .2), height: 1, thickness: 1),
             Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 15,
-              ),
+              margin: EdgeInsets.symmetric(vertical: 15),
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
@@ -189,14 +166,10 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'iTeam-\$ community',
-                      style: TextStyle(
-                        color: Colors.teal,
-                      ),
+                      text: 'iTeam-\$ community (2021)',
+                      style: TextStyle(color: Colors.teal),
                     ),
-                    TextSpan(
-                      text: ' .',
-                    ),
+                    TextSpan(text: ' .'),
                   ],
                 ),
               ),
@@ -214,12 +187,9 @@ class _AppDrawerState extends State<AppDrawer> {
     required VoidCallback voidCallback,
   }) {
     return Container(
-      color: isSelected ? orange.withOpacity(.5) : Colors.transparent,
+      color: isSelected ? orange.withValues(alpha: .5) : Colors.transparent,
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(
-          vertical: 7,
-          horizontal: 17,
-        ),
+        contentPadding: EdgeInsets.symmetric(vertical: 7, horizontal: 17),
         style: ListTileStyle.drawer,
         onTap: voidCallback,
         title: Text(

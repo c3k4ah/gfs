@@ -81,18 +81,10 @@ class _BudgetPageState extends State<BudgetPage> {
           onPressed: () {
             _key.currentState!.openDrawer();
           },
-          icon: Icon(
-            LineIcons.verticalEllipsis,
-          ),
+          icon: Icon(LineIcons.verticalEllipsis),
           color: Colors.black,
         ),
-        title: Text(
-          "BUDGET",
-          style: TextStyle(
-            color: dark,
-            fontSize: 35,
-          ),
-        ),
+        title: Text("BUDGET", style: TextStyle(color: dark, fontSize: 35)),
       ),
       body: Container(
         color: dark,
@@ -151,38 +143,44 @@ class _BudgetPageState extends State<BudgetPage> {
                           aspectRatio: .7,
                           child: PieChart(
                             PieChartData(
-                              pieTouchData: PieTouchData(touchCallback:
-                                  (FlTouchEvent event, pieTouchResponse) {
-                                setState(() {
-                                  if (!event.isInterestedForInteractions ||
-                                      pieTouchResponse == null ||
-                                      pieTouchResponse.touchedSection == null) {
-                                    touchedIndex = -1;
-                                    return;
-                                  }
-                                  touchedIndex = pieTouchResponse
-                                      .touchedSection!.touchedSectionIndex;
-                                });
-                              }),
-                              borderData: FlBorderData(
-                                show: false,
+                              pieTouchData: PieTouchData(
+                                touchCallback: (
+                                  FlTouchEvent event,
+                                  pieTouchResponse,
+                                ) {
+                                  setState(() {
+                                    if (!event.isInterestedForInteractions ||
+                                        pieTouchResponse == null ||
+                                        pieTouchResponse.touchedSection ==
+                                            null) {
+                                      touchedIndex = -1;
+                                      return;
+                                    }
+                                    touchedIndex =
+                                        pieTouchResponse
+                                            .touchedSection!
+                                            .touchedSectionIndex;
+                                  });
+                                },
                               ),
+                              borderData: FlBorderData(show: false),
                               sectionsSpace: 1,
                               centerSpaceRadius: 40,
-                              sections: Boxes.getBudget().isNotEmpty
-                                  ? show()
-                                  : [
-                                      PieChartSectionData(
-                                        color: orange,
-                                        value: 100,
-                                        showTitle: false,
-                                        radius: 50,
-                                        borderSide: BorderSide(
-                                          color: dark,
-                                          width: 0.5,
+                              sections:
+                                  Boxes.getBudget().isNotEmpty
+                                      ? show()
+                                      : [
+                                        PieChartSectionData(
+                                          color: orange,
+                                          value: 100,
+                                          showTitle: false,
+                                          radius: 50,
+                                          borderSide: BorderSide(
+                                            color: dark,
+                                            width: 0.5,
+                                          ),
                                         ),
-                                      )
-                                    ],
+                                      ],
                             ),
                           ),
                         ),
@@ -237,54 +235,43 @@ class _BudgetPageState extends State<BudgetPage> {
                       }
                     },
                   ),
-                )
+                ),
               ],
             ),
           ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: isMultiselected
-          ? FloatingActionButton(
-              onPressed: () async {
-                if (selectedList.isEmpty) {
-                  setState(() {
-                    isMultiselected = false;
-                    selectedList.clear();
-                  });
-                } else {
-                  await delete();
-                  selectedList.clear();
-                  setState(
-                    () {
+      floatingActionButton:
+          isMultiselected
+              ? FloatingActionButton(
+                onPressed: () async {
+                  if (selectedList.isEmpty) {
+                    setState(() {
                       isMultiselected = false;
-                    },
-                  );
-                }
-              },
-              backgroundColor: Colors.red,
-              child: selectedList.isEmpty
-                  ? Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: 30,
-                    )
-                  : Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                      size: 30,
-                    ),
-            )
-          : FloatingActionButton(
-              onPressed: () {
-                Get.toNamed('/ajoutBudget');
-              },
-              backgroundColor: Colors.white,
-              child: Icon(
-                LineIcons.plus,
-                color: Colors.black,
+                      selectedList.clear();
+                    });
+                  } else {
+                    await delete();
+                    selectedList.clear();
+                    setState(() {
+                      isMultiselected = false;
+                    });
+                  }
+                },
+                backgroundColor: Colors.red,
+                child:
+                    selectedList.isEmpty
+                        ? Icon(Icons.close, color: Colors.white, size: 30)
+                        : Icon(Icons.delete, color: Colors.white, size: 30),
+              )
+              : FloatingActionButton(
+                onPressed: () {
+                  Get.toNamed('/ajoutBudget');
+                },
+                backgroundColor: Colors.white,
+                child: Icon(LineIcons.plus, color: Colors.black),
               ),
-            ),
     );
   }
 
@@ -301,9 +288,10 @@ class _BudgetPageState extends State<BudgetPage> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2.5),
       decoration: BoxDecoration(
-        color: !(isMultiselected && isSelected)
-            ? Colors.transparent
-            : Colors.white12,
+        color:
+            !(isMultiselected && isSelected)
+                ? Colors.transparent
+                : Colors.white12,
       ),
       child: ListTile(
         onLongPress: () {
@@ -326,33 +314,29 @@ class _BudgetPageState extends State<BudgetPage> {
         ),
         subtitle: Text(
           "${toDateN(dateDebut)} - ${toDateN(dateFin)}",
-          style: TextStyle(
-            color: Colors.white54,
-          ),
+          style: TextStyle(color: Colors.white54),
         ),
-        trailing: isMultiselected
-            ? IconButton(
-                onPressed: onTap,
-                icon: selectedList.contains(id)
-                    ? Icon(
-                        LineIcons.checkCircle,
-                        size: 32,
-                        color: Colors.red,
-                      )
-                    : Icon(
-                        LineIcons.circle,
-                        size: 33,
-                        color: Colors.red,
-                      ),
-              )
-            : Text(
-                "$montant Ar",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 17,
-                  color: Colors.white,
+        trailing:
+            isMultiselected
+                ? IconButton(
+                  onPressed: onTap,
+                  icon:
+                      selectedList.contains(id)
+                          ? Icon(
+                            LineIcons.checkCircle,
+                            size: 32,
+                            color: Colors.red,
+                          )
+                          : Icon(LineIcons.circle, size: 33, color: Colors.red),
+                )
+                : Text(
+                  "$montant Ar",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
       ),
     );
   }
@@ -364,8 +348,9 @@ class _BudgetPageState extends State<BudgetPage> {
       final radius = isTouched ? 60.0 : 50.0;
 
       return PieChartSectionData(
-        color: _data.listCategorie[budget.type].couleur
-            .withOpacity(isTouched ? 0.2 : 1),
+        color: _data.listCategorie[budget.type].couleur.withValues(
+          alpha: isTouched ? 0.2 : 1,
+        ),
         value: budget.montant,
         title: isTouched ? "${budget.montant} Ar" : percent(budget.montant),
         titlePositionPercentageOffset: isTouched ? 1.3 : 1.7,

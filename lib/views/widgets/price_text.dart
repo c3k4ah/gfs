@@ -13,10 +13,6 @@ class PriceText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var colorToUse =
-        MediaQuery.of(context).platformBrightness == Brightness.light
-            ? color
-            : AppColors.primaryWhiteColor;
     return Row(
       children: [
         Text(
